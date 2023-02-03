@@ -12,6 +12,15 @@ form.addEventListener("submit", (event) => {
         // Prevent form submission
         event.preventDefault();
     }
+    else if(password.validity.valid && confirm.validity.valid) {
+        // Clear error message
+        clearError();
+        // Prevent form submission as there are no other pages
+        event.preventDefault();
+        // Clear form data
+        form.reset();
+    }
+    
 });
 
 // Display custom error
@@ -20,4 +29,12 @@ const showError = (prompt) => {
     pwdError.textContent = prompt;
     // Update class name to activate styling change
     pwdError.className = "error active";
+}
+
+// Clear custom error
+const clearError = () => {
+    // Set error text
+    pwdError.textContent = "";
+    // Update class name to activate styling change
+    pwdError.className = "error";
 }
